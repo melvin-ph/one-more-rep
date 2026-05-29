@@ -2357,6 +2357,219 @@ ul, ol { list-style: none; }
 }
 
 
+/* ─── Calculator Tabs Switcher ─── */
+.calculator-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--white-10);
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
+.calculator-tabs .tab-btn {
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  color: var(--white-40);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.calculator-tabs .tab-btn:hover {
+  color: var(--white-80);
+}
+
+.calculator-tabs .tab-btn.active {
+  color: var(--gold-light);
+}
+
+.calculator-tabs .tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+/* ─── TDEE Macros Extra Styles ─── */
+.calc-panel {
+  display: none;
+  animation: calcFadeIn 0.4s ease forwards;
+}
+
+.calc-panel.active {
+  display: block;
+}
+
+@keyframes calcFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   WORKOUT PLANNER SECTION
+   ═══════════════════════════════════════════════════ */
+.workout-planner {
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--black-deep);
+  border-top: 1px solid var(--white-03);
+}
+
+.workout-planner__card {
+  background: #0A0A0A;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  max-width: 960px;
+  margin: 0 auto;
+  transition: border-color 0.4s ease;
+}
+
+.workout-planner__card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.workout-planner__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.planner-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.goal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.goal-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--black-surface);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.goal-btn:hover {
+  background: var(--black-elevated);
+  border-color: rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.goal-btn.active {
+  background: rgba(212, 175, 55, 0.05);
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.08);
+}
+
+.goal-btn .btn-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.goal-btn.active .btn-icon {
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.level-btn:hover {
+  background: var(--black-elevated);
+  color: var(--white);
+}
+
+.level-btn.active {
+  background: var(--gold) !important;
+  color: var(--black-deep) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Glassmorphism result card for workouts */
+.workout-result-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.workout-result-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.workout-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
+}
+
+.day-tab-btn:hover {
+  border-color: var(--white-20);
+  color: var(--white);
+}
+
+.day-tab-btn.active {
+  background: var(--gold) !important;
+  color: var(--black-deep) !important;
+  border-color: transparent !important;
+}
+
+.exercises-container {
+  width: 100%;
+}
+
+.exercise-item:hover {
+  background: var(--black-elevated) !important;
+  border-color: rgba(212, 175, 55, 0.15) !important;
+  transform: translateX(4px);
+}
+
+
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════ */
@@ -2391,6 +2604,11 @@ ul, ol { list-style: none; }
 
   .wellness-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workout-planner__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
 
@@ -2531,6 +2749,18 @@ ul, ol { list-style: none; }
   .wellness-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .workout-planner__card {
+    padding: 30px 20px;
+  }
+
+  .workout-result-card {
+    padding: 24px 16px;
+  }
+
+  .day-tabs {
+    flex-wrap: wrap;
   }
 }
 
