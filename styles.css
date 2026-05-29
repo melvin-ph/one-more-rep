@@ -2617,14 +2617,16 @@ ul, ol { list-style: none; }
 }
 
 .trainers__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 30px;
 }
 
 .trainer-card {
   perspective: 1000px;
   border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 400px;
 }
 
 .trainer-card__inner {
@@ -2937,9 +2939,6 @@ ul, ol { list-style: none; }
     gap: 30px;
   }
 
-  .trainers__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
