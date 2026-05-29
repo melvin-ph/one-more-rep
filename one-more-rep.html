@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>One More Rep Fitness Studio – Opening Shortly in Kovaipudur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:    #080808;
+    --charcoal: #111111;
+    --card-bg:  rgba(20,20,20,0.75);
+    --red:      #D62828;
+    --red-glow: rgba(214,40,40,0.55);
+    --orange:   #FF6B00;
+    --amber:    #FFC300;
+    --white:    #F5F5F5;
+    --muted:    #999;
+    --glass-border: rgba(255,255,255,0.08);
+    --neon-glow: 0 0 18px rgba(255,107,0,0.6), 0 0 40px rgba(255,107,0,0.25);
+    --red-shadow: 0 0 18px rgba(214,40,40,0.55), 0 0 40px rgba(214,40,40,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── SCANLINE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(8,8,8,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(214,40,40,0.25);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-cta {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, box-shadow 0.2s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--orange); box-shadow: var(--neon-glow); }
+
+  /* ── SECTION COMMONS ── */
+  section { position: relative; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 0 4rem;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(214,40,40,0.18) 0%, transparent 70%),
+      linear-gradient(160deg, #0a0a0a 0%, #0f0f0f 50%, #0a0505 100%);
+  }
+  .hero-noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-grid-line {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--red);
+    padding: 0.35rem 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 16vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title .accent { color: var(--red); display: block; }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.75);
+    margin: 1rem 0 0.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-quote {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--amber);
+    margin: 0.75rem 0 2rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-quote::before, .hero-quote::after {
+    content: ''; display: block;
+    height: 1px; width: 30px;
+    background: var(--amber); opacity: 0.5;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.25s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: var(--orange); box-shadow: var(--neon-glow); transform: translateY(-2px); }
+  .btn-wa {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,107,0,0.4);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    transition: all 0.25s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-wa:hover { border-color: var(--orange); box-shadow: var(--neon-glow); transform: translateY(-2px); }
+  .hero-phone-row {
+    margin-top: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+  .hero-phone-row a { color: inherit; text-decoration: none; }
+  .hero-phone-row a:hover { color: var(--orange); }
+  .hero-deco-line {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    width: 340px; height: 340px;
+    border: 1px solid rgba(214,40,40,0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spin 30s linear infinite;
+  }
+  .hero-deco-line::after {
+    content: ''; position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(214,40,40,0.08);
+    border-radius: 50%;
+  }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+  /* ── COUNTDOWN ── */
+  #countdown {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(214,40,40,0.3);
+    border-bottom: 1px solid rgba(214,40,40,0.3);
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .countdown-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .countdown-units {
+    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .cd-unit {
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 72px;
+  }
+  .cd-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1;
+    color: var(--red);
+    text-shadow: var(--red-shadow);
+  }
+  .cd-lbl {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+  .cd-sep {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(214,40,40,0.4);
+    align-self: flex-start;
+    padding-top: 0.15rem;
+  }
+
+  /* ── BADGE BAR ── */
+  #badge-bar {
+    background: linear-gradient(90deg, var(--red) 0%, #8B0000 100%);
+    padding: 1rem 0;
+    overflow: hidden;
+  }
+  .ticker-track {
+    display: flex;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 1.5rem;
+    padding: 0 2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ticker-item .sep { opacity: 0.5; }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION HEADER ── */
+  .sec-header { text-align: center; margin-bottom: 3.5rem; }
+  .sec-tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid rgba(214,40,40,0.4);
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--white);
+  }
+  .sec-title em { color: var(--red); font-style: normal; }
+  .sec-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+
+  /* ── FACILITIES ── */
+  #facilities {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+  }
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    background: rgba(214,40,40,0.15);
+    border: 1px solid rgba(214,40,40,0.15);
+  }
+  .facility-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    padding: 2.2rem 2rem;
+    display: flex; gap: 1.4rem; align-items: flex-start;
+    border: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .facility-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--orange));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s;
+  }
+  .facility-card:hover { background: rgba(30,10,10,0.9); border-color: rgba(214,40,40,0.2); transform: translateY(-3px); }
+  .facility-card:hover::before { transform: scaleX(1); }
+  .fac-icon {
+    width: 48px; height: 48px;
+    background: rgba(214,40,40,0.12);
+    border: 1px solid rgba(214,40,40,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+  }
+  .fac-body {}
+  .fac-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+  .fac-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .fac-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid rgba(255,195,0,0.35);
+    padding: 0.15rem 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ── OFFER BANNER ── */
+  #offer {
+    padding: 5rem 0;
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 50%, rgba(214,40,40,0.12) 0%, transparent 70%),
+      linear-gradient(135deg, #0d0507 0%, #0a0a0a 100%);
+    border-top: 1px solid rgba(214,40,40,0.2);
+    border-bottom: 1px solid rgba(214,40,40,0.2);
+  }
+  .offer-inner {
+    text-align: center;
+    max-width: 680px; margin: 0 auto;
+  }
+  .offer-percent {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 18vw, 10rem);
+    line-height: 0.85;
+    color: var(--red);
+    text-shadow: var(--red-shadow);
+    position: relative;
+    display: inline-block;
+  }
+  .offer-percent::after {
+    content: 'OFF';
+    position: absolute;
+    right: -2rem;
+    bottom: 0.6rem;
+    font-size: 0.18em;
+    color: var(--orange);
+    letter-spacing: 0.15em;
+  }
+  .offer-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .offer-sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; }
+  .offer-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .btn-amber {
+    background: var(--amber);
+    color: #080808;
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.05rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.25s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-amber:hover { background: var(--orange); box-shadow: var(--neon-glow); transform: translateY(-2px); }
+  .offer-phone {
+    margin-top: 1.8rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+  .offer-phone a { color: var(--amber); text-decoration: none; }
+  .offer-phone a:hover { color: var(--orange); }
+  .offer-phone .label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── LOCATION ── */
+  #location {
+    padding: 6rem 0;
+    background: var(--charcoal);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .address-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .address-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--red), var(--orange));
+  }
+  .addr-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .addr-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+  }
+  .addr-line {
+    font-size: 0.95rem;
+    color: rgba(245,245,245,0.7);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--red);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-outline:hover { background: var(--red); box-shadow: var(--red-shadow); transform: translateY(-2px); }
+  .map-embed {
+    width: 100%; height: 320px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .map-embed iframe {
+    width: 100%; height: 100%; border: none;
+  }
+
+  /* ── HIRING ── */
+  #hiring {
+    padding: 6rem 0;
+    background:
+      linear-gradient(135deg, #0a0808 0%, #0a0a0a 100%);
+    border-top: 1px solid rgba(214,40,40,0.15);
+  }
+  .hiring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .hire-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem 1.8rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hire-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--orange));
+    transform: scaleX(0);
+    transition: transform 0.35s;
+  }
+  .hire-card:hover { border-color: rgba(214,40,40,0.3); transform: translateY(-4px); }
+  .hire-card:hover::after { transform: scaleX(1); }
+  .hire-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .hire-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .hire-gender {
+    font-size: 0.8rem;
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hiring-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  /* ── SOCIAL STRIP ── */
+  #social-strip {
+    padding: 3rem 0;
+    text-align: center;
+    background: var(--charcoal);
+    border-top: 1px solid var(--glass-border);
+  }
+  .social-follow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .social-handle {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.25s;
+  }
+  .social-handle:hover { border-color: var(--red); color: var(--red); }
+  .ig-icon {
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    border-top: 1px solid rgba(214,40,40,0.2);
+    padding: 3.5rem 0 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
+  }
+  .footer-brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .footer-brand-name span { color: var(--red); }
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .footer-motto {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255,195,0,0.7);
+    letter-spacing: 0.05em;
+  }
+  .footer-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    color: rgba(245,245,245,0.65);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .footer-links a:hover { color: var(--red); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0.8rem 1.2rem; }
+    .hero-title { font-size: clamp(3.5rem, 20vw, 5rem); }
+    .location-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-grid > *:not(:first-child) { display: none; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .offer-percent::after { right: -1.5rem; font-size: 0.22em; }
+  }
+  @media (max-width: 480px) {
+    .facilities-grid { grid-template-columns: 1fr; gap: 0; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .countdown-units { gap: 0.5rem; }
+    .cd-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">ONE MORE <span>REP</span></div>
+  <a href="https://wa.me/917338877968?text=I want to pre-register" target="_blank" class="nav-cta">Pre-Register</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-deco-line"></div>
+  <div class="container hero-inner">
+    <div class="hero-badge">⚡ Coming Soon to Kovaipudur</div>
+    <h1 class="hero-title">
+      OPENING<br>
+      <span class="accent">SHORTLY!</span>
+    </h1>
+    <p class="hero-sub">The Ultimate Fitness Journey Starts Soon in Kovaipudur.</p>
+    <div class="hero-quote">"Start today for a stronger tomorrow"</div>
+    <div class="hero-actions">
+      <a href="https://wa.me/917338877968?text=I want to pre-register" target="_blank" class="btn-primary">
+        🔒 Lock in Founder Rates
+      </a>
+      <a href="tel:7338877968" class="btn-wa">
+        📞 Call to Pre-Register
+      </a>
+    </div>
+    <div class="hero-phone-row">
+      <a href="tel:7338877968">📲 7338877968</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── COUNTDOWN ── -->
+<section id="countdown">
+  <div class="countdown-label">Grand Opening In</div>
+  <div class="countdown-units">
+    <div class="cd-unit"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Seconds</div></div>
+  </div>
+</section>
+
+<!-- ── BADGE TICKER ── -->
+<section id="badge-bar">
+  <div class="ticker-track">
+    <!-- duplicated for infinite loop -->
+    <span class="ticker-item">🏆 Kovaipudur's Premium Fitness Destination <span class="sep">✦</span></span>
+    <span class="ticker-item">❄️ First Steam & Ice Bath in the Area <span class="sep">✦</span></span>
+    <span class="ticker-item">💪 Certified Personal Trainers <span class="sep">✦</span></span>
+    <span class="ticker-item">🔒 Dedicated Timings for Ladies <span class="sep">✦</span></span>
+    <span class="ticker-item">📍 Gokulam Colony, Kovaipudur <span class="sep">✦</span></span>
+    <span class="ticker-item">🏆 Kovaipudur's Premium Fitness Destination <span class="sep">✦</span></span>
+    <span class="ticker-item">❄️ First Steam & Ice Bath in the Area <span class="sep">✦</span></span>
+    <span class="ticker-item">💪 Certified Personal Trainers <span class="sep">✦</span></span>
+    <span class="ticker-item">🔒 Dedicated Timings for Ladies <span class="sep">✦</span></span>
+    <span class="ticker-item">📍 Gokulam Colony, Kovaipudur <span class="sep">✦</span></span>
+  </div>
+</section>
+
+<!-- ── FACILITIES ── -->
+<section id="facilities">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Premium Facilities</div>
+      <h2 class="sec-title">BUILT FOR <em>SERIOUS</em> ATHLETES</h2>
+      <p class="sec-sub">Every feature engineered to maximize your performance, recovery, and comfort.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="facility-card reveal reveal-delay-1">
+        <div class="fac-icon">🏋️</div>
+        <div class="fac-body">
+          <div class="fac-name">Strength & Conditioning</div>
+          <div class="fac-desc">Dedicated weight training and CrossFit zone with premium-grade equipment built for heavy lifters and performance athletes.</div>
+        </div>
+      </div>
+      <div class="facility-card reveal reveal-delay-2">
+        <div class="fac-icon">🏃</div>
+        <div class="fac-body">
+          <div class="fac-name">Endurance</div>
+          <div class="fac-desc">High-end cardio area with advanced treadmills, bikes, and rowers — engineered for maximum cardiovascular output.</div>
+        </div>
+      </div>
+      <div class="facility-card reveal reveal-delay-3">
+        <div class="fac-icon">❄️</div>
+        <div class="fac-body">
+          <div class="fac-name">Recovery</div>
+          <div class="fac-desc">Premium Steam & Ice Bath recovery suite — the first of its kind in the Kovaipudur area.</div>
+          <div class="fac-badge">★ First in Area</div>
+        </div>
+      </div>
+      <div class="facility-card reveal reveal-delay-1">
+        <div class="fac-icon">❄️</div>
+        <div class="fac-body">
+          <div class="fac-name">Comfort</div>
+          <div class="fac-desc">Fully air-conditioned training environment with hygienic, well-maintained washroom facilities throughout.</div>
+        </div>
+      </div>
+      <div class="facility-card reveal reveal-delay-2">
+        <div class="fac-icon">👤</div>
+        <div class="fac-body">
+          <div class="fac-name">Expert Guidance</div>
+          <div class="fac-desc">Certified personal trainers with proven track records. Tailored programming for every goal — from fat loss to elite performance.</div>
+        </div>
+      </div>
+      <div class="facility-card reveal reveal-delay-3">
+        <div class="fac-icon">🔒</div>
+        <div class="fac-body">
+          <div class="fac-name">Exclusive Privacy</div>
+          <div class="fac-desc">Special dedicated timings exclusively for ladies — a safe, comfortable, and focused training environment.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFER BANNER ── -->
+<section id="offer">
+  <div class="container">
+    <div class="offer-inner reveal">
+      <div class="sec-tag" style="margin-bottom:1.2rem;">Limited Time Offer</div>
+      <div class="offer-percent">10%</div>
+      <h2 class="offer-headline">PRE-REGISTER NOW & SAVE</h2>
+      <p class="offer-sub">Lock in your <strong>Founder Membership</strong> at our lowest-ever rate. Once we open, this offer is gone.</p>
+      <div class="offer-actions">
+        <a href="https://wa.me/917338877968?text=I want to pre-register" target="_blank" class="btn-amber">🎁 Claim 10% Off Now</a>
+        <a href="tel:7338877968" class="btn-primary">📞 Call to Register</a>
+      </div>
+      <div class="offer-phone">
+        <span class="label">Call / WhatsApp to Pre-Register</span>
+        <a href="tel:7338877968">📲 7338877968</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
+<section id="location">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Find Us</div>
+      <h2 class="sec-title">WHERE TO <em>FIND US</em></h2>
+    </div>
+    <div class="location-grid reveal">
+      <div class="address-card">
+        <div class="addr-icon">📍</div>
+        <div class="addr-name">ONE MORE REP FITNESS STUDIO</div>
+        <div class="addr-line">
+          No 5, Green House,<br>
+          Gokulam Colony, Matha Complex,<br>
+          Opp A1 Ground,<br>
+          Kovaipudur – 641 042
+        </div>
+        <a href="https://maps.google.com/?q=Gokulam+Colony,+Kovaipudur,+641042" target="_blank" class="btn-outline">
+          🗺️ Get Directions
+        </a>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.267!2d76.9312!3d10.9893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDU5JzIxLjUiTiA3NsKwNTUnNTIuMyJF!5e0!3m2!1sen!2sin!4v1"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HIRING ── -->
+<section id="hiring">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Join the Team</div>
+      <h2 class="sec-title">STAFF <em>REQUIRED</em></h2>
+      <p class="sec-sub">Be part of Kovaipudur's most exciting fitness launch. Grow with us.</p>
+    </div>
+    <div class="hiring-grid">
+      <div class="hire-card reveal reveal-delay-1">
+        <div class="hire-icon">🧑‍💼</div>
+        <div class="hire-role">Receptionist</div>
+        <div class="hire-gender">Female</div>
+      </div>
+      <div class="hire-card reveal reveal-delay-2">
+        <div class="hire-icon">🏋️‍♂️</div>
+        <div class="hire-role">Personal Trainer</div>
+        <div class="hire-gender">Male</div>
+      </div>
+      <div class="hire-card reveal reveal-delay-3">
+        <div class="hire-icon">🏋️‍♀️</div>
+        <div class="hire-role">Personal Trainer</div>
+        <div class="hire-gender">Female</div>
+      </div>
+    </div>
+    <div class="hiring-cta reveal">
+      <a href="https://wa.me/917338877968?text=I'm interested in joining the One More Rep team" target="_blank" class="btn-primary" style="font-size:1rem;">
+        💼 Join Our Team &amp; Grow With Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL STRIP ── -->
+<section id="social-strip">
+  <div class="social-follow">Follow For Updates</div>
+  <a href="https://instagram.com/1morerep.fitnessstudio" target="_blank" class="social-handle">
+    <span class="ig-icon">📸</span>
+    @1morerep.fitnessstudio
+  </a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">ONE MORE <span>REP</span></div>
+        <div class="footer-tagline">Train More. Push More. Be More.</div>
+        <div class="footer-motto">"Train Hard. Recover Better. Live Stronger."</div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#facilities">→ Facilities</a></li>
+          <li><a href="#offer">→ Founder Offer</a></li>
+          <li><a href="#location">→ Location</a></li>
+          <li><a href="#hiring">→ Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:7338877968">📞 7338877968</a></li>
+          <li><a href="https://wa.me/917338877968?text=I want to pre-register" target="_blank">💬 WhatsApp Us</a></li>
+          <li><a href="https://instagram.com/1morerep.fitnessstudio" target="_blank">📸 @1morerep.fitnessstudio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 One More Rep Fitness Studio, Kovaipudur</span>
+      <span style="color:rgba(214,40,40,0.5);">TRAIN HARD · RECOVER BETTER · LIVE STRONGER</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── COUNTDOWN ── */
+  const target = new Date('2025-09-01T00:00:00').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
