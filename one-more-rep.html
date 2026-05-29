@@ -23,6 +23,44 @@
     --glass-border: rgba(255,255,255,0.08);
     --neon-glow: 0 0 18px rgba(255,107,0,0.6), 0 0 40px rgba(255,107,0,0.25);
     --red-shadow: 0 0 18px rgba(214,40,40,0.55), 0 0 40px rgba(214,40,40,0.2);
+    
+    /* Variables for synced layout */
+    --black-deep:    #050505;
+    --black-bg:      var(--black);
+    --black-charcoal:var(--charcoal);
+    --black-card:    var(--charcoal);
+    --black-surface: #161616;
+    --black-elevated:#1A1A1A;
+    --red-bright:    #EF4444;
+    --red-deep:      #991B1B;
+    --gold:          var(--amber);
+    --gold-light:    var(--amber);
+    --gold-dark:     #B8941F;
+    --burnt-orange:  var(--orange);
+    --white-95:      rgba(255,255,255,0.95);
+    --white-80:      rgba(255,255,255,0.80);
+    --white-60:      rgba(255,255,255,0.60);
+    --white-40:      rgba(255,255,255,0.40);
+    --white-20:      rgba(255,255,255,0.20);
+    --white-10:      rgba(255,255,255,0.10);
+    --white-05:      rgba(255,255,255,0.05);
+    --white-03:      rgba(255,255,255,0.03);
+    --gradient-red:  linear-gradient(135deg, var(--red) 0%, #8B0000 100%);
+    --gradient-gold: linear-gradient(135deg, var(--amber) 0%, var(--orange) 100%);
+    --shadow-sm:     0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md:     0 8px 32px rgba(0,0,0,0.4);
+    --shadow-lg:     0 16px 64px rgba(0,0,0,0.5);
+    --shadow-glow-r: 0 0 30px rgba(214,40,40,0.25), 0 0 60px rgba(214,40,40,0.1);
+    --shadow-glow-g: 0 0 30px rgba(255,195,0,0.25), 0 0 60px rgba(255,195,0,0.1);
+    --font-display:  'Bebas Neue', sans-serif;
+    --font-body:     'Barlow', sans-serif;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart:cubic-bezier(0.25, 1, 0.5, 1);
+    --radius-sm:     8px;
+    --radius-md:     12px;
+    --radius-lg:     16px;
+    --radius-xl:     24px;
+    --section-pad:   6rem;
   }
 
   html { scroll-behavior: smooth; }
@@ -721,6 +759,614 @@
     .countdown-units { gap: 0.5rem; }
     .cd-sep { display: none; }
   }
+
+  /* ═══════════════════════════════════════════════════
+     TIMINGS, MEMBERSHIPS & WELLNESS
+     ═══════════════════════════════════════════════════ */
+
+  .schedule-pricing {
+    padding: var(--section-pad) 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--black-bg);
+  }
+
+  .schedule-pricing__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+    align-items: stretch;
+  }
+
+  .schedule-pricing__col {
+    background: var(--black-card);
+    border: 1px solid var(--white-05);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-out-expo);
+  }
+
+  .schedule-pricing__col:hover {
+    transform: translateY(-4px);
+    border-color: rgba(220, 38, 38, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .schedule-pricing__col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-red);
+  }
+
+  .schedule-pricing__timings::before {
+    background: var(--gradient-red);
+  }
+
+  .schedule-pricing__memberships::before {
+    background: var(--gradient-gold);
+  }
+
+  .schedule-pricing__memberships:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .card-icon {
+    font-size: 1.8rem;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .timings-list, .plans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+    flex-grow: 1;
+  }
+
+  .timing-item, .plan-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--black-surface);
+    border: 1px solid var(--white-03);
+    border-radius: var(--radius-sm);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .timing-item:hover, .plan-item:hover {
+    background: var(--black-elevated);
+    border-color: var(--white-10);
+  }
+
+  .timing-slot, .plan-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--white-95);
+  }
+
+  .timing-details, .plan-duration {
+    font-size: 0.85rem;
+    color: var(--white-60);
+  }
+
+  .timing-item--ladies-highlight {
+    border-color: rgba(220, 38, 38, 0.35);
+    background: rgba(220, 38, 38, 0.03);
+  }
+
+  .timing-item--ladies-highlight:hover {
+    background: rgba(220, 38, 38, 0.06);
+    border-color: rgba(220, 38, 38, 0.5);
+  }
+
+  .timing-item--ladies-highlight .timing-slot {
+    color: var(--red-bright);
+  }
+
+  .badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  .badge--ladies {
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid var(--red);
+    color: var(--red-bright);
+  }
+
+  .badge--popular {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+  }
+
+  .plan-item--popular {
+    border-color: rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.03);
+  }
+
+  .plan-item--popular:hover {
+    background: rgba(212, 175, 55, 0.06);
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+
+  .plan-item--popular .plan-name {
+    color: var(--gold-light);
+  }
+
+  .card-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--white-05);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--white-60);
+    line-height: 1.5;
+  }
+
+  .card-note svg {
+    color: var(--red);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .pricing-enquire-btn {
+    width: 100%;
+  }
+
+  /* Wellness Add-Ons */
+  .wellness-section {
+    width: 100%;
+  }
+
+  .wellness-card {
+    position: relative;
+    background: linear-gradient(160deg, var(--black-card) 0%, var(--black-charcoal) 100%);
+    border: 1px solid var(--white-05);
+    border-radius: var(--radius-lg);
+    padding: 48px;
+    overflow: hidden;
+  }
+
+  .wellness-card__glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .wellness-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .wellness-card__header {
+    margin-bottom: 40px;
+    max-width: 720px;
+  }
+
+  .wellness-card__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .wellness-card__icon {
+    font-size: 2rem;
+  }
+
+  .wellness-card__title {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .wellness-card__subtitle {
+    color: var(--white-60);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .wellness-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .wellness-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--black-surface);
+    border: 1px solid var(--white-03);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .wellness-item:hover {
+    background: var(--black-elevated);
+    border-color: rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .wellness-item__icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wellness-item:hover .wellness-item__icon {
+    background: rgba(212, 175, 55, 0.08);
+  }
+
+  .wellness-item__content h4 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--white-95);
+  }
+
+  .wellness-item__content p {
+    font-size: 0.8rem;
+    color: var(--white-40);
+    line-height: 1.5;
+  }
+
+
+  /* ═══════════════════════════════════════════════════
+     BMI CALCULATOR
+     ═══════════════════════════════════════════════════ */
+
+  .bmi-calculator {
+    padding: var(--section-pad) 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--black-deep);
+  }
+
+  .section-label--gold {
+    border-color: rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.06);
+    color: var(--gold);
+  }
+
+  .hl--gold {
+    color: var(--gold);
+  }
+
+  .bmi-calculator__card {
+    background: #0A0A0A;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-xl);
+    padding: 48px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .bmi-calculator__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .bmi-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .unit-toggle {
+    display: flex;
+    background: var(--black-surface);
+    border-radius: var(--radius-sm);
+    padding: 4px;
+    border: 1px solid var(--white-05);
+  }
+
+  .unit-btn {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: var(--white-60);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .unit-btn.active {
+    background: var(--black-elevated);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-group--row {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .input-subgroup {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-group label, .input-subgroup label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white-60);
+  }
+
+  .input-group input, .input-subgroup input {
+    padding: 14px 18px;
+    background: var(--black-surface);
+    border: 1px solid var(--white-10);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+  }
+
+  .input-group input:focus, .input-subgroup input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+  }
+
+  .bmi-calc-btn {
+    padding: 16px 28px;
+    background: var(--gold);
+    color: var(--black-deep);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    width: 100%;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .bmi-calc-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-g);
+  }
+
+  .bmi-error {
+    color: var(--red-bright);
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  /* Glassmorphism Result Card */
+  .bmi-result-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid var(--white-05);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bmi-result-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .result-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--white-40);
+    max-width: 280px;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .result-placeholder h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white-60);
+  }
+
+  .result-placeholder p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .result-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bmi-gauge {
+    margin-bottom: 20px;
+  }
+
+  .bmi-gauge__value {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+  }
+
+  .bmi-gauge__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--white-40);
+  }
+
+  .bmi-category-wrap {
+    margin-bottom: 20px;
+  }
+
+  .bmi-category {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 6px 18px;
+    background: var(--white-05);
+    border-radius: 30px;
+    border: 1px solid var(--white-10);
+    display: inline-block;
+  }
+
+  .bmi-category.cat-underweight {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.06);
+    border-color: rgba(56, 189, 248, 0.25);
+  }
+  .bmi-category.cat-normal {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.06);
+    border-color: rgba(74, 222, 128, 0.25);
+  }
+  .bmi-category.cat-overweight {
+    color: #fb923c;
+    background: rgba(251, 146, 60, 0.06);
+    border-color: rgba(251, 146, 60, 0.25);
+  }
+  .bmi-category.cat-obese {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.06);
+    border-color: rgba(248, 113, 113, 0.25);
+  }
+
+  .bmi-range-info {
+    font-size: 0.85rem;
+    color: var(--white-60);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .bmi-range-info strong {
+    color: var(--white-95);
+  }
+
+  .bmi-message {
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--white-80);
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+    border-left: 2px solid var(--gold);
+    max-width: 320px;
+  }
+
+  .bmi-trainer-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  @media (max-width: 1100px) {
+    .schedule-pricing__grid { grid-template-columns: 1fr; }
+    .wellness-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .bmi-calculator__card { padding: 30px 20px; }
+    .bmi-calculator__grid { grid-template-columns: 1fr; gap: 30px; }
+    .wellness-card { padding: 32px 24px; }
+    .wellness-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -865,6 +1511,234 @@
   </div>
 </section>
 
+
+<!-- ── TIMINGS & MEMBERSHIPS ── -->
+<section class="schedule-pricing reveal" id="plans-schedule">
+  <div class="container">
+    <div class="schedule-pricing__grid">
+      
+      <!-- Operating Timings Column -->
+      <div class="schedule-pricing__col schedule-pricing__timings">
+        <div class="card-header">
+          <span class="card-icon">⏰</span>
+          <h3 class="card-title">Operating Timings</h3>
+        </div>
+        <div class="timings-list">
+          <div class="timing-item">
+            <span class="timing-slot">5:30 AM – 1:00 PM</span>
+            <span class="timing-details">General (Unisex)</span>
+          </div>
+          <div class="timing-item timing-item--ladies-highlight">
+            <span class="timing-slot">10:00 AM – 1:00 PM</span>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+              <span class="timing-details">Ladies Only (Exclusive)</span>
+              <span class="badge badge--ladies">Ladies Exclusive</span>
+            </div>
+          </div>
+          <div class="timing-item">
+            <span class="timing-slot">4:00 PM – 10:00 PM</span>
+            <span class="timing-details">General (Unisex)</span>
+          </div>
+        </div>
+        <div class="card-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span><strong>Note:</strong> Ladies exclusive slot is from 10 AM to 1 PM. Remaining hours are unisex.</span>
+        </div>
+      </div>
+
+      <!-- Membership Plans Column -->
+      <div class="schedule-pricing__col schedule-pricing__memberships">
+        <div class="card-header">
+          <span class="card-icon">💪</span>
+          <h3 class="card-title">Membership Plans</h3>
+        </div>
+        <div class="plans-list">
+          <div class="plan-item">
+            <span class="plan-name">Lifetime Membership</span>
+            <span class="plan-duration">One-time payment</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-name">Single Day</span>
+            <span class="plan-duration">1 Day</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-name">10 Days</span>
+            <span class="plan-duration">10 Days</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-name">15 Days</span>
+            <span class="plan-duration">15 Days</span>
+          </div>
+          <div class="plan-item plan-item--popular">
+            <span class="plan-name">1 Month</span>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+              <span class="plan-duration">30 Days</span>
+              <span class="badge badge--popular">Founder Choice</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/917338877968?text=I%20want%20to%20enquire%20about%20membership%20plans" target="_blank" class="btn-amber pricing-enquire-btn" style="text-align:center; justify-content:center;" id="plans-enquire-static">
+          ENQUIRE FOR PLANS
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Wellness Add-Ons Row -->
+    <div class="wellness-section" style="margin-top: 48px;">
+      <div class="wellness-card">
+        <div class="wellness-card__glow"></div>
+        <div class="wellness-badge">Premium Health Assessment</div>
+        
+        <div class="wellness-card__header">
+          <div class="wellness-card__title-wrap">
+            <span class="wellness-card__icon">🧬</span>
+            <h3 class="wellness-card__title">Wellness Add-On Features</h3>
+          </div>
+          <p class="wellness-card__subtitle">Supercharge your results using our professional diagnostic and recovery metrics. Available to all members as custom add-ons.</p>
+        </div>
+        
+        <div class="wellness-grid">
+          <div class="wellness-item">
+            <div class="wellness-item__icon">📊</div>
+            <div class="wellness-item__content">
+              <h4>Body Composition Machine</h4>
+              <p>Advanced metrics measuring Body Fat %, Muscle Mass, Visceral Fat, BMR, etc.</p>
+            </div>
+          </div>
+          <div class="wellness-item">
+            <div class="wellness-item__icon">🥗</div>
+            <div class="wellness-item__content">
+              <h4>Customized Diet Plan</h4>
+              <p>Personalized nutrition guides compiled by certified trainers to suit your goals.</p>
+            </div>
+          </div>
+          <div class="wellness-item">
+            <div class="wellness-item__icon">💧</div>
+            <div class="wellness-item__content">
+              <h4>Hydration Level</h4>
+              <p>Tracking of water levels to ensure cellular nutrition and prevent fatigue.</p>
+            </div>
+          </div>
+          <div class="wellness-item">
+            <div class="wellness-item__icon">🥩</div>
+            <div class="wellness-item__content">
+              <h4>Protein & Mineral Balance</h4>
+              <p>Analyze lean mass requirements and maintain high recovery rates.</p>
+            </div>
+          </div>
+          <div class="wellness-item">
+            <div class="wellness-item__icon">⏳</div>
+            <div class="wellness-item__content">
+              <h4>Metabolic Age</h4>
+              <p>Compare biological base parameters against statistical baselines.</p>
+            </div>
+          </div>
+          <div class="wellness-item">
+            <div class="wellness-item__icon">🦴</div>
+            <div class="wellness-item__content">
+              <h4>Bone Mass</h4>
+              <p>Identify bone density factors to optimize structural strength safely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── BMI CALCULATOR ── -->
+<section class="bmi-calculator reveal" id="bmi-calculator">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag" style="border-color: rgba(255,195,0,0.4); color: var(--amber);">KNOW YOUR BODY</div>
+      <h2 class="sec-title">Calculate your BMI – <span style="color: var(--amber);">Free & Instant</span></h2>
+      <p class="sec-sub">Take charge of your health. Quickly determine your BMI to optimize your workouts and nutrition.</p>
+    </div>
+
+    <div class="bmi-calculator__card">
+      <div class="bmi-calculator__grid">
+        
+        <!-- Input Form Column -->
+        <div class="bmi-form">
+          <div class="unit-toggle">
+            <button type="button" class="unit-btn active" id="unit-metric">Metric (cm/kg)</button>
+            <button type="button" class="unit-btn" id="unit-imperial">Imperial (ft-in/kg)</button>
+          </div>
+
+          <!-- Height Input Group -->
+          <div class="input-group" id="group-metric-height">
+            <label for="bmi-height-cm">Height (cm)</label>
+            <input type="number" id="bmi-height-cm" placeholder="e.g. 175" min="100" max="250" />
+          </div>
+
+          <div class="input-group input-group--row" id="group-imperial-height" style="display: none;">
+            <div class="input-subgroup">
+              <label for="bmi-height-ft">Height (feet)</label>
+              <input type="number" id="bmi-height-ft" placeholder="e.g. 5" min="3" max="8" />
+            </div>
+            <div class="input-subgroup">
+              <label for="bmi-height-in">Height (inches)</label>
+              <input type="number" id="bmi-height-in" placeholder="e.g. 9" min="0" max="11" />
+            </div>
+          </div>
+
+          <!-- Weight Input Group -->
+          <div class="input-group">
+            <label for="bmi-weight">Weight (kg)</label>
+            <input type="number" id="bmi-weight" placeholder="e.g. 70" min="30" max="250" />
+          </div>
+
+          <button type="button" class="btn btn--gold bmi-calc-btn" style="border: none; cursor: pointer;" id="btn-calculate-bmi">
+            CALCULATE BMI
+          </button>
+          <p class="bmi-error" id="bmi-error" style="display: none;"></p>
+        </div>
+
+        <!-- Result Column (Glassmorphism style) -->
+        <div class="bmi-result-card" id="bmi-result-card">
+          <div class="result-placeholder" id="result-placeholder">
+            <span class="placeholder-icon">📊</span>
+            <h3>Enter your details above</h3>
+            <p>Your results, category, healthy weight range, and tailored health guidance will appear here instantly.</p>
+          </div>
+
+          <div class="result-content" id="result-content" style="display: none;">
+            <div class="bmi-gauge">
+              <div class="bmi-gauge__value" id="bmi-val">--.-</div>
+              <div class="bmi-gauge__label">YOUR BMI SCORE</div>
+            </div>
+            
+            <div class="bmi-category-wrap">
+              <span class="bmi-category" id="bmi-cat">Normal Weight</span>
+            </div>
+
+            <div class="bmi-range-info" id="bmi-range-info">
+              Healthy weight range for your height:<br/>
+              <strong id="bmi-healthy-range">-- kg - -- kg</strong>
+            </div>
+
+            <div class="bmi-message" id="bmi-msg">
+              "Know your numbers. Start your journey at One More Rep."
+            </div>
+
+            <div class="bmi-actions" style="margin-top: 24px; width: 100%;">
+              <a href="https://wa.me/917338877968?text=Hello%20One%20More%20Rep%2C%20I%20just%20calculated%20my%20BMI%20on%20your%20website%20and%20want%20to%20talk%20to%20a%20trainer." 
+                 target="_blank" rel="noopener" class="btn-wa bmi-trainer-btn" style="text-align: center; justify-content: center; width: 100%;">
+                TALK TO A TRAINER
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ── LOCATION ── -->
 <section id="location">
   <div class="container">
@@ -952,7 +1826,8 @@
         <div class="footer-heading">Quick Links</div>
         <ul class="footer-links">
           <li><a href="#facilities">→ Facilities</a></li>
-          <li><a href="#offer">→ Founder Offer</a></li>
+          <li><a href="#plans-schedule">→ Plans & Schedule</a></li>
+          <li><a href="#bmi-calculator">→ BMI Calculator</a></li>
           <li><a href="#location">→ Location</a></li>
           <li><a href="#hiring">→ Careers</a></li>
         </ul>
@@ -998,6 +1873,129 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ── BMI Calculator ──
+  const unitMetric = document.getElementById('unit-metric');
+  const unitImperial = document.getElementById('unit-imperial');
+  const groupMetricHeight = document.getElementById('group-metric-height');
+  const groupImperialHeight = document.getElementById('group-imperial-height');
+  
+  const heightCm = document.getElementById('bmi-height-cm');
+  const heightFt = document.getElementById('bmi-height-ft');
+  const heightIn = document.getElementById('bmi-height-in');
+  const weightKg = document.getElementById('bmi-weight');
+  
+  const btnCalculate = document.getElementById('btn-calculate-bmi');
+  const bmiError = document.getElementById('bmi-error');
+  
+  const resultPlaceholder = document.getElementById('result-placeholder');
+  const resultContent = document.getElementById('result-content');
+  const bmiVal = document.getElementById('bmi-val');
+  const bmiCat = document.getElementById('bmi-cat');
+  const bmiHealthyRange = document.getElementById('bmi-healthy-range');
+  const bmiMsg = document.getElementById('bmi-msg');
+
+  let currentUnit = 'metric';
+
+  if (unitMetric && unitImperial) {
+    unitMetric.addEventListener('click', () => {
+      currentUnit = 'metric';
+      unitMetric.classList.add('active');
+      unitImperial.classList.remove('active');
+      groupMetricHeight.style.display = 'flex';
+      groupImperialHeight.style.display = 'none';
+      bmiError.style.display = 'none';
+    });
+
+    unitImperial.addEventListener('click', () => {
+      currentUnit = 'imperial';
+      unitImperial.classList.add('active');
+      unitMetric.classList.remove('active');
+      groupMetricHeight.style.display = 'none';
+      groupImperialHeight.style.display = 'flex';
+      bmiError.style.display = 'none';
+    });
+  }
+
+  if (btnCalculate) {
+    btnCalculate.addEventListener('click', () => {
+      bmiError.style.display = 'none';
+      
+      let heightMeters = 0;
+      const weight = parseFloat(weightKg.value);
+
+      if (currentUnit === 'metric') {
+        const cm = parseFloat(heightCm.value);
+        if (isNaN(cm) || cm < 100 || cm > 250) {
+          showError('Please enter a valid height between 100 cm and 250 cm.');
+          return;
+        }
+        heightMeters = cm / 100;
+      } else {
+        const ft = parseFloat(heightFt.value);
+        const inches = parseFloat(heightIn.value) || 0;
+        if (isNaN(ft) || ft < 3 || ft > 8 || isNaN(inches) || inches < 0 || inches > 11) {
+          showError('Please enter a valid height (3 ft to 8 ft, inches 0 to 11).');
+          return;
+        }
+        const totalInches = (ft * 12) + inches;
+        heightMeters = totalInches * 0.0254;
+      }
+
+      if (isNaN(weight) || weight < 30 || weight > 250) {
+        showError('Please enter a valid weight between 30 kg and 250 kg.');
+        return;
+      }
+
+      // Calculate BMI
+      const bmi = weight / (heightMeters * heightMeters);
+      const bmiRounded = bmi.toFixed(1);
+
+      // Calculate Healthy Weight Range (BMI 18.5 - 24.9)
+      const minWeight = Math.round(18.5 * heightMeters * heightMeters);
+      const maxWeight = Math.round(24.9 * heightMeters * heightMeters);
+
+      // Display results
+      bmiVal.textContent = bmiRounded;
+      
+      // Determine category and styling
+      let category = '';
+      let catClass = '';
+      let message = 'Know your numbers. Start your journey at One More Rep.';
+
+      if (bmi < 18.5) {
+        category = 'Underweight';
+        catClass = 'cat-underweight';
+        message = 'Every rep builds you. Nourish your body and start your journey at One More Rep.';
+      } else if (bmi >= 18.5 && bmi < 25) {
+        category = 'Normal Weight';
+        catClass = 'cat-normal';
+        message = 'Excellent balance! Keep pushing and maintain your strength at One More Rep.';
+      } else if (bmi >= 25 && bmi < 30) {
+        category = 'Overweight';
+        catClass = 'cat-overweight';
+        message = 'Time to burn and build. Crush your goals. Start your journey at One More Rep.';
+      } else {
+        category = 'Obese';
+        catClass = 'cat-obese';
+        message = 'Take the first step today. We will guide you. Start your journey at One More Rep.';
+      }
+
+      bmiCat.textContent = category;
+      bmiCat.className = 'bmi-category ' + catClass;
+      bmiHealthyRange.textContent = `${minWeight} kg - ${maxWeight} kg`;
+      bmiMsg.innerHTML = `"${message}"`;
+
+      // Switch views with smooth transition
+      resultPlaceholder.style.display = 'none';
+      resultContent.style.display = 'flex';
+    });
+  }
+
+  function showError(msg) {
+    bmiError.textContent = msg;
+    bmiError.style.display = 'block';
+  }
 
   /* ── SCROLL REVEAL ── */
   const observer = new IntersectionObserver((entries) => {

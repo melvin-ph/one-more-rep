@@ -1760,15 +1760,600 @@ ul, ol { list-style: none; }
   transform: scale(1.12);
   box-shadow: 0 8px 36px rgba(37,211,102,0.5);
 }
+/* ═══════════════════════════════════════════════════
+   TIMINGS, MEMBERSHIPS & WELLNESS
+   ═══════════════════════════════════════════════════ */
 
-/* Pulse ring */
-.wa-float::before {
+.schedule-pricing {
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--black-bg);
+}
+
+.schedule-pricing__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  align-items: stretch;
+}
+
+.schedule-pricing__col {
+  background: var(--black-card);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.schedule-pricing__col:hover {
+  transform: translateY(-4px);
+  border-color: rgba(220, 38, 38, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.schedule-pricing__col::before {
   content: '';
   position: absolute;
-  inset: -4px;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-red);
+}
+
+.schedule-pricing__timings::before {
+  background: var(--gradient-red);
+}
+
+.schedule-pricing__memberships::before {
+  background: var(--gradient-gold);
+}
+
+.schedule-pricing__memberships:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.card-icon {
+  font-size: 1.8rem;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timings-list, .plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.timing-item, .plan-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--black-surface);
+  border: 1px solid var(--white-03);
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timing-item:hover, .plan-item:hover {
+  background: var(--black-elevated);
+  border-color: var(--white-10);
+}
+
+.timing-slot, .plan-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--white-95);
+}
+
+.timing-details, .plan-duration {
+  font-size: 0.85rem;
+  color: var(--white-60);
+}
+
+.timing-item--ladies-highlight {
+  border-color: rgba(220, 38, 38, 0.35);
+  background: rgba(220, 38, 38, 0.03);
+}
+
+.timing-item--ladies-highlight:hover {
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.timing-item--ladies-highlight .timing-slot {
+  color: var(--red-bright);
+}
+
+.badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.badge--ladies {
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid var(--red);
+  color: var(--red-bright);
+}
+
+.badge--popular {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.plan-item--popular {
+  border-color: rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.plan-item--popular:hover {
+  background: rgba(212, 175, 55, 0.06);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.plan-item--popular .plan-name {
+  color: var(--gold-light);
+}
+
+.card-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--white-60);
+  line-height: 1.5;
+}
+
+.card-note svg {
+  color: var(--red);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.pricing-enquire-btn {
+  width: 100%;
+}
+
+/* Wellness Add-Ons */
+.wellness-section {
+  width: 100%;
+}
+
+.wellness-card {
+  position: relative;
+  background: linear-gradient(160deg, var(--black-card) 0%, var(--black-charcoal) 100%);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  overflow: hidden;
+}
+
+.wellness-card__glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.wellness-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.wellness-card__header {
+  margin-bottom: 40px;
+  max-width: 720px;
+}
+
+.wellness-card__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.wellness-card__icon {
+  font-size: 2rem;
+}
+
+.wellness-card__title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wellness-card__subtitle {
+  color: var(--white-60);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.wellness-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.wellness-item {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: var(--black-surface);
+  border: 1px solid var(--white-03);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.wellness-item:hover {
+  background: var(--black-elevated);
+  border-color: rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
+}
+
+.wellness-item__icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 50%;
-  border: 2px solid rgba(37,211,102,0.4);
-  animation: pulse-dot 2.5s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wellness-item:hover .wellness-item__icon {
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.wellness-item__content h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--white-95);
+}
+
+.wellness-item__content p {
+  font-size: 0.8rem;
+  color: var(--white-40);
+  line-height: 1.5;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   BMI CALCULATOR
+   ═══════════════════════════════════════════════════ */
+
+.bmi-calculator {
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--black-deep);
+}
+
+.section-label--gold {
+  border-color: rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.06);
+  color: var(--gold);
+}
+
+.hl--gold {
+  color: var(--gold);
+}
+
+.bmi-calculator__card {
+  background: #0A0A0A;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.bmi-calculator__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.bmi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.unit-toggle {
+  display: flex;
+  background: var(--black-surface);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  border: 1px solid var(--white-05);
+}
+
+.unit-btn {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: var(--white-60);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.unit-btn.active {
+  background: var(--black-elevated);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group--row {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.input-subgroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label, .input-subgroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white-60);
+}
+
+.input-group input, .input-subgroup input {
+  padding: 14px 18px;
+  background: var(--black-surface);
+  border: 1px solid var(--white-10);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.input-group input:focus, .input-subgroup input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.bmi-calc-btn {
+  padding: 16px 28px;
+  background: var(--gold);
+  color: var(--black-deep);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  width: 100%;
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.bmi-calc-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-g);
+}
+
+.bmi-error {
+  color: var(--red-bright);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* Glassmorphism Result Card */
+.bmi-result-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid var(--white-05);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bmi-result-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.result-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--white-40);
+  max-width: 280px;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.result-placeholder h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white-60);
+}
+
+.result-placeholder p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.result-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bmi-gauge {
+  margin-bottom: 20px;
+}
+
+.bmi-gauge__value {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.bmi-gauge__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--white-40);
+}
+
+.bmi-category-wrap {
+  margin-bottom: 20px;
+}
+
+.bmi-category {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 6px 18px;
+  background: var(--white-05);
+  border-radius: 30px;
+  border: 1px solid var(--white-10);
+  display: inline-block;
+}
+
+.bmi-category.cat-underweight {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+.bmi-category.cat-normal {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.06);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+.bmi-category.cat-overweight {
+  color: #fb923c;
+  background: rgba(251, 146, 60, 0.06);
+  border-color: rgba(251, 146, 60, 0.25);
+}
+.bmi-category.cat-obese {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.06);
+  border-color: rgba(248, 113, 113, 0.25);
+}
+
+.bmi-range-info {
+  font-size: 0.85rem;
+  color: var(--white-60);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.bmi-range-info strong {
+  color: var(--white-95);
+}
+
+.bmi-message {
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--white-80);
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--gold);
+  max-width: 320px;
+}
+
+.bmi-trainer-btn {
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  width: 100%;
 }
 
 
@@ -1798,6 +2383,14 @@ ul, ol { list-style: none; }
 
   .footer__main {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .schedule-pricing__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wellness-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1920,6 +2513,24 @@ ul, ol { list-style: none; }
     height: 44px;
     bottom: 24px;
     right: 24px;
+  }
+
+  .bmi-calculator__card {
+    padding: 30px 20px;
+  }
+
+  .bmi-calculator__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .wellness-card {
+    padding: 32px 24px;
+  }
+
+  .wellness-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
