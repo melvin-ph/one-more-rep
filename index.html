@@ -552,6 +552,14 @@
                 </select>
               </div>
 
+              <div class="input-group">
+                <label for="tdee-diet">Dietary Preference</label>
+                <select id="tdee-diet" style="padding: 14px 18px; background: var(--black-surface); border: 1px solid var(--white-10); border-radius: var(--radius-sm); color: var(--white); font-size: 1rem; font-family: var(--font-body); transition: all 0.3s ease; outline: none;">
+                  <option value="standard">Standard (Non-Vegetarian)</option>
+                  <option value="vegetarian">High-Protein Vegetarian</option>
+                </select>
+              </div>
+
               <button type="button" class="btn btn--gold bmi-calc-btn" id="btn-calculate-tdee">
                 CALCULATE TDEE & MACROS
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -611,18 +619,73 @@
                   </div>
                 </div>
 
-                <div class="bmi-actions" style="width: 100%;">
+                <div class="bmi-actions" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+                  <button type="button" class="btn btn--gold bmi-trainer-btn" id="btn-generate-diet" style="text-align: center; justify-content: center; width: 100%;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    GENERATE DIET PLAN
+                  </button>
+
                   <a id="tdee-whatsapp-btn" href="https://wa.me/917338877968?text=Hello%20One%20More%20Rep%2C%20I%20just%20calculated%20my%20TDEE%20on%20your%20website%20and%20want%20to%20talk%20about%20a%20diet%20plan." 
-                     target="_blank" rel="noopener" class="btn btn--secondary bmi-trainer-btn" style="text-align: center; justify-content: center;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    GET CUSTOM DIET PLAN
+                     target="_blank" rel="noopener" class="btn btn--secondary bmi-trainer-btn" style="text-align: center; justify-content: center; width: 100%;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    CONSULT NUTRITIONIST
                   </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
+
+        <!-- Diet Plan display card -->
+        <div class="diet-result-card" id="tdee-diet-plan-card" style="display: none; margin-top: 32px; border-top: 1px dashed var(--white-10); padding-top: 32px; width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; text-align: left;">
+            <div>
+              <h3 id="diet-plan-title" style="font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px;">HIGH-PROTEIN VEGETARIAN DIET</h3>
+              <p id="diet-plan-subtitle" style="font-size: 0.72rem; color: var(--white-40); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin: 0;">PORTIONS SCALED FOR 2200 KCAL TARGET</p>
+            </div>
+            <div style="font-size: 2rem;" id="diet-plan-icon">🥗</div>
+          </div>
+
+          <!-- Meals list grid -->
+          <div class="diet-meals-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+            <div class="meal-card" style="background: var(--black-surface); border: 1px solid var(--white-05); border-radius: var(--radius-md); padding: 20px; transition: border-color 0.3s ease;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">
+                <span>🍳 Breakfast</span>
+              </div>
+              <div id="diet-meal-1-content"></div>
+            </div>
+
+            <div class="meal-card" style="background: var(--black-surface); border: 1px solid var(--white-05); border-radius: var(--radius-md); padding: 20px; transition: border-color 0.3s ease;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">
+                <span>🥗 Lunch</span>
+              </div>
+              <div id="diet-meal-2-content"></div>
+            </div>
+
+            <div class="meal-card" style="background: var(--black-surface); border: 1px solid var(--white-05); border-radius: var(--radius-md); padding: 20px; transition: border-color 0.3s ease;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">
+                <span>🍌 Snack (Pre-Workout)</span>
+              </div>
+              <div id="diet-meal-3-content"></div>
+            </div>
+
+            <div class="meal-card" style="background: var(--black-surface); border: 1px solid var(--white-05); border-radius: var(--radius-md); padding: 20px; transition: border-color 0.3s ease;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">
+                <span>🥛 Dinner</span>
+              </div>
+              <div id="diet-meal-4-content"></div>
+            </div>
+          </div>
+
+          <!-- Diet Plan Actions -->
+          <div style="display: flex; gap: 16px; margin-top: 24px; justify-content: flex-end;">
+            <button type="button" class="btn btn--outline" id="btn-copy-diet" style="padding: 12px 24px; font-size: 0.8rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              COPY MEAL PLAN
+            </button>
+          </div>
+        </div>
+      </div>
   </section>
 
 
@@ -1415,6 +1478,14 @@
         const msgText = `Hello One More Rep, I just calculated my TDEE & Macros on your website. My Daily Target is ${targetCaloriesRounded} calories/day (${proteinGrams}g Protein, ${carbsGrams}g Carbs, ${fatsGrams}g Fats) for my goal of ${goalText}. I want to talk to a trainer about a customized diet plan.`;
         tdeeWhatsappBtn.href = `https://wa.me/917338877968?text=${encodeURIComponent(msgText)}`;
 
+        // Save calculated target calories globally
+        calculatedTargetCalories = targetCaloriesRounded;
+
+        // Hide diet card when recalculating TDEE
+        if (tdeeDietPlanCard) {
+          tdeeDietPlanCard.style.display = 'none';
+        }
+
         // Switch panel result views
         tdeeResultPlaceholder.style.display = 'none';
         tdeeResultContent.style.display = 'flex';
@@ -1424,6 +1495,211 @@
     function showTdeeError(msg) {
       tdeeError.textContent = msg;
       tdeeError.style.display = 'block';
+    }
+
+
+    // ── TDEE Diet Preference Variables ──
+    const tdeeDiet = document.getElementById('tdee-diet');
+    const btnGenerateDiet = document.getElementById('btn-generate-diet');
+    const tdeeDietPlanCard = document.getElementById('tdee-diet-plan-card');
+    const dietPlanTitle = document.getElementById('diet-plan-title');
+    const dietPlanSubtitle = document.getElementById('diet-plan-subtitle');
+    const dietPlanIcon = document.getElementById('diet-plan-icon');
+    const dietMeal1Content = document.getElementById('diet-meal-1-content');
+    const dietMeal2Content = document.getElementById('diet-meal-2-content');
+    const dietMeal3Content = document.getElementById('diet-meal-3-content');
+    const dietMeal4Content = document.getElementById('diet-meal-4-content');
+    const btnCopyDiet = document.getElementById('btn-copy-diet');
+
+    let calculatedTargetCalories = 2000; // default baseline
+
+    // ── Diet Plans Database ──
+    const dietPlansDb = {
+      standard: {
+        title: 'Standard High-Protein Diet',
+        icon: '🍗',
+        meals: [
+          {
+            name: 'Breakfast',
+            items: [
+              { food: 'Whole Eggs', baseQty: 3, unit: 'pcs' },
+              { food: 'Oats (raw weight)', baseQty: 60, unit: 'g' },
+              { food: 'Whey Protein (with water)', baseQty: 1, unit: 'scoop' },
+              { food: 'Almonds', baseQty: 10, unit: 'pcs' }
+            ]
+          },
+          {
+            name: 'Lunch',
+            items: [
+              { food: 'Grilled Chicken Breast', baseQty: 150, unit: 'g' },
+              { food: 'Basmati Rice (cooked weight)', baseQty: 150, unit: 'g' },
+              { food: 'Mixed Vegetables / Broccoli', baseQty: 100, unit: 'g' },
+              { food: 'Olive Oil (for cooking)', baseQty: 1, unit: 'tsp' }
+            ]
+          },
+          {
+            name: 'Pre-Workout Snack',
+            items: [
+              { food: 'Banana', baseQty: 1, unit: 'pc' },
+              { food: 'Peanut Butter', baseQty: 1.5, unit: 'tbsp' },
+              { food: 'Whole Wheat Toast', baseQty: 2, unit: 'slices' }
+            ]
+          },
+          {
+            name: 'Dinner',
+            items: [
+              { food: 'Fish Fillet (or Lean Chicken)', baseQty: 150, unit: 'g' },
+              { food: 'Sweet Potato (boiled)', baseQty: 120, unit: 'g' },
+              { food: 'Green Salad', baseQty: 1, unit: 'bowl' },
+              { food: 'Extra Virgin Olive Oil', baseQty: 1, unit: 'tsp' }
+            ]
+          }
+        ]
+      },
+      vegetarian: {
+        title: 'High-Protein Vegetarian Diet',
+        icon: '🥛',
+        meals: [
+          {
+            name: 'Breakfast',
+            items: [
+              { food: 'Low-Fat Paneer / Tofu', baseQty: 100, unit: 'g' },
+              { food: 'Oats (raw weight)', baseQty: 60, unit: 'g' },
+              { food: 'Whey Protein (with milk/water)', baseQty: 1, unit: 'scoop' },
+              { food: 'Chia Seeds', baseQty: 1, unit: 'tbsp' }
+            ]
+          },
+          {
+            name: 'Lunch',
+            items: [
+              { food: 'Tofu Stir-fry', baseQty: 150, unit: 'g' },
+              { food: 'Cooked Lentils / Dal', baseQty: 1, unit: 'cup' },
+              { food: 'Brown Rice (cooked weight)', baseQty: 150, unit: 'g' },
+              { food: 'Mixed Veggies', baseQty: 100, unit: 'g' }
+            ]
+          },
+          {
+            name: 'Pre-Workout Snack',
+            items: [
+              { food: 'Banana', baseQty: 1, unit: 'pc' },
+              { food: 'Peanut Butter', baseQty: 1.5, unit: 'tbsp' },
+              { food: 'Whole Wheat Toast', baseQty: 2, unit: 'slices' }
+            ]
+          },
+          {
+            name: 'Dinner',
+            items: [
+              { food: 'Soya Chunks (dry weight)', baseQty: 50, unit: 'g' },
+              { food: 'Greek Yogurt (low-fat)', baseQty: 150, unit: 'g' },
+              { food: 'Sweet Potato or Roti', baseQty: 2, unit: 'pcs' },
+              { food: 'Mixed Greens Salad', baseQty: 1, unit: 'bowl' }
+            ]
+          }
+        ]
+      }
+    };
+
+    function scaleQuantity(baseQty, scaleFactor, unit) {
+      const val = baseQty * scaleFactor;
+      if (unit === 'g' || unit === 'kcal' || unit === 'ml' || unit === 'grams') {
+        return Math.round(val);
+      } else {
+        return Math.round(val * 10) / 10;
+      }
+    }
+
+    // Generate diet program
+    if (btnGenerateDiet) {
+      btnGenerateDiet.addEventListener('click', () => {
+        const dietPref = tdeeDiet.value;
+        const dietData = dietPlansDb[dietPref];
+        if (!dietData) return;
+
+        const targetKcal = calculatedTargetCalories || 2000;
+        const scaleFactor = targetKcal / 2000;
+
+        // Update titles
+        dietPlanTitle.textContent = dietData.title;
+        dietPlanSubtitle.textContent = `PORTIONS SCALED FOR ${targetKcal} KCAL TARGET`;
+        dietPlanIcon.textContent = dietData.icon;
+
+        // Render Meals
+        renderMealContent(dietMeal1Content, dietData.meals[0], scaleFactor);
+        renderMealContent(dietMeal2Content, dietData.meals[1], scaleFactor);
+        renderMealContent(dietMeal3Content, dietData.meals[2], scaleFactor);
+        renderMealContent(dietMeal4Content, dietData.meals[3], scaleFactor);
+
+        // Show diet plan card
+        tdeeDietPlanCard.style.display = 'block';
+
+        // Smooth scroll to diet card
+        setTimeout(() => {
+          const top = tdeeDietPlanCard.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }, 100);
+      });
+    }
+
+    function renderMealContent(el, meal, scaleFactor) {
+      el.innerHTML = '';
+      let listHtml = '<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">';
+      
+      meal.items.forEach(item => {
+        const scaledQty = scaleQuantity(item.baseQty, scaleFactor, item.unit);
+        listHtml += `
+          <li style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--white-80); border-bottom: 1px solid var(--white-03); padding-bottom: 6px;">
+            <span>• ${item.food}</span>
+            <strong style="color: var(--white-95);">${scaledQty} ${item.unit}</strong>
+          </li>
+        `;
+      });
+      
+      listHtml += '</ul>';
+      el.innerHTML = listHtml;
+    }
+
+    // Copy Diet program to clipboard
+    if (btnCopyDiet) {
+      btnCopyDiet.addEventListener('click', () => {
+        const dietPref = tdeeDiet.value;
+        const dietData = dietPlansDb[dietPref];
+        if (!dietData) return;
+
+        const targetKcal = calculatedTargetCalories || 2000;
+        const scaleFactor = targetKcal / 2000;
+
+        let text = `ONE MORE REP FITNESS STUDIO - NUTRITION PLAN\n`;
+        text += `===========================================\n`;
+        text += `Plan: ${dietData.title}\n`;
+        text += `Calorie Target: ${targetKcal} kcal / day\n\n`;
+
+        dietData.meals.forEach(meal => {
+          text += `${meal.name.toUpperCase()}\n`;
+          text += `-------------------------------------------\n`;
+          meal.items.forEach(item => {
+            const scaledQty = scaleQuantity(item.baseQty, scaleFactor, item.unit);
+            text += `- ${item.food}: ${scaledQty} ${item.unit}\n`;
+          });
+          text += `\n`;
+        });
+        text += `===========================================\n`;
+        text += `Achieve your results with One More Rep!\n`;
+        text += `WhatsApp/Call: +91 7338877968`;
+
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = btnCopyDiet.innerHTML;
+          btnCopyDiet.innerHTML = `✓ COPIED!`;
+          btnCopyDiet.style.borderColor = '#34d399';
+          btnCopyDiet.style.color = '#34d399';
+          setTimeout(() => {
+            btnCopyDiet.innerHTML = originalText;
+            btnCopyDiet.style.borderColor = '';
+            btnCopyDiet.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
     }
 
 
