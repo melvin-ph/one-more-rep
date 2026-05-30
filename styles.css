@@ -3122,3 +3122,45 @@ ul, ol { list-style: none; }
     font-size: clamp(4rem, 18vw, 6rem);
   }
 }
+
+/* ═══════════════ FLOATING QUICK-CONTACT BUTTON ═══════════════ */
+.floating-contact {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background: #25D366; /* WhatsApp Green */
+  color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-contact:hover {
+  transform: scale(1.1) translateY(-4px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
+  color: #FFF;
+}
+
+.floating-contact svg {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 480px) {
+  .floating-contact {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .floating-contact svg {
+    width: 26px;
+    height: 26px;
+  }
+}
