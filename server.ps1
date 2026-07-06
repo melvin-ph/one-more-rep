@@ -42,7 +42,7 @@ try {
         $response = $context.Response
 
         $localPath = $request.Url.LocalPath
-        if ($localPath -eq "/") { $localPath = "/index.html" }
+        if ($localPath -eq "/") { $localPath = "/one-more-rep.html" }
 
         $filePath = Join-Path $root ($localPath.TrimStart("/").Replace("/", "\"))
 
