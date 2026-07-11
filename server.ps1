@@ -1,8 +1,12 @@
-$port = 3000
+param(
+    [int]$port = 3000
+)
+
 $root = $PSScriptRoot
 
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:$port/")
+$listener.Prefixes.Add("http://127.0.0.1:$port/")
 $listener.Start()
 
 Write-Host ""
@@ -37,39 +41,47 @@ $mimeTypes = @{
 
 try {
     while ($listener.IsListening) {
-        $context = $listener.GetContext()
-        $request = $context.Request
-        $response = $context.Response
+        try {
+            $context = $listener.GetContext()
+            $request = $context.Request
+            $response = $context.Response
 
-        $localPath = $request.Url.LocalPath
-        if ($localPath -eq "/") { $localPath = "/one-more-rep.html" }
+            $localPath = $request.Url.LocalPath
+            if ($localPath -eq "/") { $localPath = "/index.html" }
 
-        $filePath = Join-Path $root ($localPath.TrimStart("/").Replace("/", "\"))
+            $filePath = Join-Path $root ($localPath.TrimStart("/").Replace("/", "\"))
 
-        if (Test-Path $filePath -PathType Leaf) {
-            $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
-            $contentType = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }
+            if (Test-Path $filePath -PathType Leaf) {
+                $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
+                $contentType = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }
 
-            $response.ContentType = $contentType
-            $response.StatusCode = 200
+                $response.ContentType = $contentType
+                $response.StatusCode = 200
 
-            $fileBytes = [System.IO.File]::ReadAllBytes($filePath)
-            $response.ContentLength64 = $fileBytes.Length
-            $response.OutputStream.Write($fileBytes, 0, $fileBytes.Length)
+                $fileBytes = [System.IO.File]::ReadAllBytes($filePath)
+                $response.ContentLength64 = $fileBytes.Length
+                if ($request.HttpMethod -ne "HEAD") {
+                    $response.OutputStream.Write($fileBytes, 0, $fileBytes.Length)
+                }
 
-            Write-Host "  200 " -NoNewline -ForegroundColor Green
-            Write-Host "$localPath"
-        } else {
-            $response.StatusCode = 404
-            $msg = [System.Text.Encoding]::UTF8.GetBytes("404 - Not Found")
-            $response.ContentLength64 = $msg.Length
-            $response.OutputStream.Write($msg, 0, $msg.Length)
+                Write-Host "  200 " -NoNewline -ForegroundColor Green
+                Write-Host "$($request.HttpMethod) $localPath"
+            } else {
+                $response.StatusCode = 404
+                $msg = [System.Text.Encoding]::UTF8.GetBytes("404 - Not Found")
+                $response.ContentLength64 = $msg.Length
+                if ($request.HttpMethod -ne "HEAD") {
+                    $response.OutputStream.Write($msg, 0, $msg.Length)
+                }
 
-            Write-Host "  404 " -NoNewline -ForegroundColor Red
-            Write-Host "$localPath"
+                Write-Host "  404 " -NoNewline -ForegroundColor Red
+                Write-Host "$($request.HttpMethod) $localPath"
+            }
+
+            $response.Close()
+        } catch {
+            Write-Host "  Error processing request: $_" -ForegroundColor DarkYellow
         }
-
-        $response.Close()
     }
 } finally {
     $listener.Stop()
