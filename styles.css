@@ -793,6 +793,89 @@ ul, ol { list-style: none; }
   max-width: 400px;
 }
 
+/* Booking Notice */
+.recovery-card__booking {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.recovery-card--steam .recovery-card__booking {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.recovery-card--ice .recovery-card__booking {
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.06);
+}
+
+.recovery-card__booking-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  margin-top: 2px;
+}
+
+.recovery-card--steam .recovery-card__booking-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--amber);
+}
+
+.recovery-card--ice .recovery-card__booking-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--cyan);
+}
+
+.recovery-card__booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recovery-card__booking-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white-90);
+}
+
+.recovery-card__booking-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white-60);
+  transition: color 0.3s ease;
+}
+
+.recovery-card--steam .recovery-card__booking-phone:hover {
+  color: var(--amber);
+}
+
+.recovery-card--ice .recovery-card__booking-phone:hover {
+  color: var(--cyan);
+}
+
+.recovery-card__booking-phone svg {
+  flex-shrink: 0;
+}
+
 
 /* ═══════════════════════════════════════════════════
    5. AI BODY COMPOSITION
