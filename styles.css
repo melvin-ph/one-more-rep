@@ -292,26 +292,46 @@ ul, ol { list-style: none; }
   z-index: 1;
 }
 
-.hero__bg {
+/* Site-wide fixed background */
+.site-fixed-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   z-index: 0;
+  pointer-events: none;
 }
 
-.hero__bg img {
+.site-fixed-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   opacity: 1;
-  filter: none;
 }
 
-.hero__overlay {
-  display: none;
+.site-fixed-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.65);
+}
+
+/* Make all sections transparent and layered above the fixed background */
+.hero,
+.why-us,
+.programs,
+.recovery,
+.ai-section,
+.motivation,
+.about,
+.location,
+.hiring,
+.footer {
+  background: transparent !important;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__glow {
