@@ -23,9 +23,12 @@
 </head>
 <body>
 
-  <!-- Global Fixed Background Image across entire website -->
+  <!-- Global Fixed Background Image across entire website (Responsive: Desktop vs Mobile) -->
   <div class="site-fixed-bg" aria-hidden="true">
-    <img src="assets/hero-main.png" alt="" />
+    <picture>
+      <source media="(max-width: 767px)" srcset="assets/hero-mobile.png" />
+      <img src="assets/hero-main.png" alt="" />
+    </picture>
   </div>
 
   <!-- ═══════════════ NAVBAR ═══════════════ -->

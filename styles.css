@@ -303,9 +303,11 @@ ul, ol { list-style: none; }
   pointer-events: none;
 }
 
+.site-fixed-bg picture,
 .site-fixed-bg img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: center top;
   opacity: 1;
