@@ -280,8 +280,9 @@ ul, ol { list-style: none; }
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--black-deep);
+  background: transparent;
   padding: 100px 0 80px;
+  z-index: 1;
 }
 
 .hero__bg {
