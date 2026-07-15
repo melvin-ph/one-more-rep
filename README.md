@@ -11,7 +11,10 @@ Welcome to the official repository for the **One More Rep Fitness Studio** landi
 - **Membership Plans**: Full breakdown of membership durations (Lifetime, Single Day, 10 Days, 15 Days, 1 Month) and integrated Enquiry CTAs.
 - **Wellness Add-Ons**: Detailed showcase of premium health diagnostics including Body Composition metrics, Customized Diet Plans, Hydration, Protein Balance, Metabolic Age, and Bone Mass.
 - **Interactive BMI Calculator**: A client-side tool matching the dark theme. Supports Metric (cm/kg) and Imperial (feet-inches/kg) toggling, custom range validation, healthy range suggestions, and direct "Talk to a Trainer" WhatsApp integration.
-- **Recovery Suite**: Spotlights steam room and cold plunge/ice bath therapy recovery features.
+- **Recovery Suite**: Spotlights steam room and cold plunge/ice bath therapy recovery features. Includes on-card appointment booking notices:
+  - **Ice Bath** — Book **1 day prior** to appointment
+  - **Steam Bath** — Book **half-day before** appointment
+  - Contact the gym at **+91 7338887968** to schedule
 - **Careers Page & Location Map**: Integrated hiring roles and custom Google Maps iframe.
 
 ---
