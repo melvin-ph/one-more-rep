@@ -1268,6 +1268,38 @@ ul, ol { list-style: none; }
   gap: 14px;
 }
 
+.location__hours {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.location__batch-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  color: var(--white-50);
+  line-height: 1.7;
+}
+
+.location__batch-list li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.location__batch-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-weight: bold;
+}
+
+.location__batch-list strong {
+  color: var(--white-90);
+}
+
 .location__contact-icon svg {
   width: 20px;
   height: 20px;
