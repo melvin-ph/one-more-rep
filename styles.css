@@ -1139,10 +1139,9 @@ ul, ol { list-style: none; }
 }
 
 .about__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  display: block;
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 .about__visual {
