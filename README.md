@@ -7,7 +7,7 @@ Welcome to the official repository for the **One More Rep Fitness Studio** landi
 ## ⚡ Key Features
 
 - **Luxury Industrial Dark Aesthetics**: Harmonious dark layout featuring premium gold and red gradients, subtle tilt/magnetic micro-animations, and grain background overlays.
-- **Operating Timings**: Clearly listed unisex slots and a highlighted **Ladies Exclusive Slot** (10:00 AM – 1:00 PM).
+- **Operating Timings**: Morning Batch (5:30 AM – 12:30 PM) and Evening Batch (5:00 PM – 10:00 PM).
 - **Membership Plans**: Full breakdown of membership durations (Lifetime, Single Day, 10 Days, 15 Days, 1 Month) and integrated Enquiry CTAs.
 - **Wellness Add-Ons**: Detailed showcase of premium health diagnostics including Body Composition metrics, Customized Diet Plans, Hydration, Protein Balance, Metabolic Age, and Bone Mass.
 - **Interactive BMI Calculator**: A client-side tool matching the dark theme. Supports Metric (cm/kg) and Imperial (feet-inches/kg) toggling, custom range validation, healthy range suggestions, and direct "Talk to a Trainer" WhatsApp integration.
